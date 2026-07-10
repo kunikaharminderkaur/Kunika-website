@@ -429,16 +429,24 @@
             font-size: 0.7rem;
             margin-top: 4px;
         }
+        .product-card .btn-group {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
         .whatsapp-order {
             display: inline-block;
-            margin-top: 12px;
             background: #25d366;
             color: #fff;
-            padding: 8px 18px;
+            padding: 6px 18px;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.8rem;
             transition: 0.3s;
+            border: none;
+            cursor: pointer;
         }
         .whatsapp-order:hover {
             background: #1ebe5c;
@@ -447,6 +455,115 @@
         .whatsapp-order i {
             margin-right: 6px;
         }
+        .add-to-cart-btn {
+            display: inline-block;
+            background: #E87A2A;
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .add-to-cart-btn:hover {
+            background: #2E7D32;
+            transform: scale(1.05);
+        }
+        .add-to-cart-btn i {
+            margin-right: 6px;
+        }
+        .product-card.disabled {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        .product-card.disabled .add-to-cart-btn {
+            display: none;
+        }
+
+        /* ========== CART MODAL ========== */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        .cart-modal.active { display: flex; }
+        .cart-box {
+            background: #fff;
+            max-width: 550px;
+            width: 90%;
+            max-height: 80vh;
+            border-radius: 20px;
+            padding: 30px;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .cart-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #888;
+            cursor: pointer;
+            transition: 0.3s;
+            background: none;
+            border: none;
+        }
+        .cart-close:hover { color: #E87A2A; }
+        .cart-box h3 {
+            color: #2E7D32;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0ebe0;
+        }
+        .cart-item:last-child { border-bottom: none; }
+        .cart-item .item-name { font-weight: 600; }
+        .cart-item .item-price { color: #E87A2A; font-weight: 700; }
+        .cart-item .item-qty {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cart-item .item-qty button {
+            background: #f0ebe0;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .cart-item .item-qty button:hover { background: #E87A2A; color: #fff; }
+        .cart-total {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #E87A2A;
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .cart-total span { color: #E87A2A; }
+        .empty-cart { color: #888; text-align: center; padding: 20px 0; }
 
         /* ========== PROCESS SECTION ========== */
         #process {
@@ -709,7 +826,10 @@
                 <input type="text" placeholder="Search..." />
                 <i class="fas fa-search"></i>
             </div>
-            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a id="cartTrigger">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
         </div>
     </div>
 </header>
@@ -784,107 +904,137 @@
                 <small>— Fresh &amp; aromatic</small>
             </div>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card" data-name="Tej Patta (Bay Leaf)" data-price="61">
                     <div class="icon"><i class="fas fa-leaf"></i></div>
                     <h4>Tej Patta (Bay Leaf)</h4>
                     <div class="price">₹61</div>
                     <span class="tag">50g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Tej%20Patta%20(50g%20-%20₹61)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Tej%20Patta%20(50g%20-%20₹61)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Saunf Moti" data-price="102">
                     <div class="icon"><i class="fas fa-seedling"></i></div>
                     <h4>Saunf Moti</h4>
                     <div class="price">₹102</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Saunf%20Moti%20(100g%20-%20₹102)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Saunf%20Moti%20(100g%20-%20₹102)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Saunf Paan" data-price="117">
                     <div class="icon"><i class="fas fa-seedling"></i></div>
                     <h4>Saunf Paan</h4>
                     <div class="price">₹117</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Saunf%20Paan%20(100g%20-%20₹117)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Saunf%20Paan%20(100g%20-%20₹117)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Zeera (Cumin)" data-price="84">
                     <div class="icon"><i class="fas fa-seedling"></i></div>
                     <h4>Zeera (Cumin)</h4>
                     <div class="price">₹84</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Zeera%20(100g%20-%20₹84)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Zeera%20(100g%20-%20₹84)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Black Pepper" data-price="115">
                     <div class="icon"><i class="fas fa-circle"></i></div>
                     <h4>Black Pepper</h4>
                     <div class="price">₹115</div>
                     <span class="tag">50g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Black%20Pepper%20(50g%20-%20₹115)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Black%20Pepper%20(50g%20-%20₹115)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Laung (Clove)" data-price="115">
                     <div class="icon"><i class="fas fa-tree"></i></div>
                     <h4>Laung (Clove)</h4>
                     <div class="price">₹115</div>
                     <span class="tag">50g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Laung%20(50g%20-%20₹115)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Laung%20(50g%20-%20₹115)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Ajwani" data-price="71">
                     <div class="icon"><i class="fas fa-seedling"></i></div>
                     <h4>Ajwani</h4>
                     <div class="price">₹71</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Ajwani%20(100g%20-%20₹71)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Ajwani%20(100g%20-%20₹71)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Dalchini (Cinnamon)" data-price="61">
                     <div class="icon"><i class="fas fa-tree"></i></div>
                     <h4>Dalchini (Cinnamon)</h4>
                     <div class="price">₹61</div>
                     <span class="tag">50g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Dalchini%20(50g%20-%20₹61)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Dalchini%20(50g%20-%20₹61)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Green Cardamom" data-price="360">
                     <div class="icon"><i class="fas fa-seedling"></i></div>
                     <h4>Green Cardamom</h4>
                     <div class="price">₹360</div>
                     <span class="tag">50g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Green%20Cardamom%20(50g%20-%20₹360)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Green%20Cardamom%20(50g%20-%20₹360)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Badi Elaichi" data-price="280">
                     <div class="icon"><i class="fas fa-seedling"></i></div>
                     <h4>Badi Elaichi</h4>
                     <div class="price">₹280</div>
                     <span class="tag">50g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Badi%20Elaichi%20(50g%20-%20₹280)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Badi%20Elaichi%20(50g%20-%20₹280)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card" style="opacity:0.7;">
+                <div class="product-card disabled" data-name="Kasturi Methi" data-price="0">
                     <div class="icon"><i class="fas fa-leaf"></i></div>
                     <h4>Kasturi Methi</h4>
                     <div class="price" style="color:#e74c3c; font-size:1rem;">⛔ Out of Stock</div>
@@ -901,45 +1051,57 @@
                 <small>— Pure &amp; fresh ground spices</small>
             </div>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card" data-name="Red Chilli Powder" data-price="74">
                     <div class="icon"><i class="fas fa-fire"></i></div>
                     <h4>Red Chilli Powder</h4>
                     <div class="price">₹74</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Red%20Chilli%20Powder%20(100g%20-%20₹74)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Red%20Chilli%20Powder%20(100g%20-%20₹74)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Haldi Powder" data-price="70">
                     <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
                     <h4>Haldi Powder</h4>
                     <div class="price">₹70</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Haldi%20Powder%20(100g%20-%20₹70)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Haldi%20Powder%20(100g%20-%20₹70)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Dhaniya Powder" data-price="55">
                     <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
                     <h4>Dhaniya Powder</h4>
                     <div class="price">₹55</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Dhaniya%20Powder%20(100g%20-%20₹55)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Dhaniya%20Powder%20(100g%20-%20₹55)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Saunth (Dry Ginger)" data-price="149">
                     <div class="icon"><i class="fas fa-seedling"></i></div>
                     <h4>Saunth (Dry Ginger)</h4>
                     <div class="price">₹149</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Saunth%20(100g%20-%20₹149)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Saunth%20(100g%20-%20₹149)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -951,31 +1113,34 @@
                 <small>— Signature blends</small>
             </div>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card" data-name="Garam Masala" data-price="150">
                     <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
                     <h4>Garam Masala</h4>
                     <div class="price">₹150</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Garam%20Masala%20(100g%20-%20₹150)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Garam%20Masala%20(100g%20-%20₹150)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card" style="opacity:0.7;">
+                <div class="product-card disabled" data-name="Sambhar Masala" data-price="0">
                     <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
                     <h4>Sambhar Masala</h4>
                     <div class="price" style="color:#f39c12; font-size:1rem;">⏳ Coming Soon</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-coming">Coming Soon</span>
                 </div>
-                <div class="product-card" style="opacity:0.7;">
+                <div class="product-card disabled" data-name="Pav Bhaji Masala" data-price="0">
                     <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
                     <h4>Pav Bhaji Masala</h4>
                     <div class="price" style="color:#f39c12; font-size:1rem;">⏳ Coming Soon</div>
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-coming">Coming Soon</span>
                 </div>
-                <div class="product-card" style="opacity:0.7;">
+                <div class="product-card disabled" data-name="Biryani Masala" data-price="0">
                     <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
                     <h4>Biryani Masala</h4>
                     <div class="price" style="color:#e74c3c; font-size:1rem;">⛔ Out of Stock</div>
@@ -992,54 +1157,66 @@
                 <small>— Cold-pressed &amp; pure</small>
             </div>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card" data-name="Black Mustard Oil (1L)" data-price="440">
                     <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
                     <h4>Black Mustard Oil</h4>
                     <div class="price">₹440</div>
                     <span class="tag">1L Bottle</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Black%20Mustard%20Oil%20(1L%20-%20₹440)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Black%20Mustard%20Oil%20(1L%20-%20₹440)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Black Mustard Oil (500ml)" data-price="220">
                     <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
                     <h4>Black Mustard Oil</h4>
                     <div class="price">₹220</div>
                     <span class="tag">500ml Bottle</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Black%20Mustard%20Oil%20(500ml%20-%20₹220)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Black%20Mustard%20Oil%20(500ml%20-%20₹220)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Yellow Mustard Oil (1L)" data-price="490">
                     <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
                     <h4>Yellow Mustard Oil</h4>
                     <div class="price">₹490</div>
                     <span class="tag">1L Bottle</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Yellow%20Mustard%20Oil%20(1L%20-%20₹490)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Yellow%20Mustard%20Oil%20(1L%20-%20₹490)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-name="Yellow Mustard Oil (500ml)" data-price="245">
                     <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
                     <h4>Yellow Mustard Oil</h4>
                     <div class="price">₹245</div>
                     <span class="tag">500ml Bottle</span><br>
                     <span class="tag-stock">In Stock</span><br>
-                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Yellow%20Mustard%20Oil%20(500ml%20-%20₹245)" target="_blank" class="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
-                    </a>
+                    <div class="btn-group">
+                        <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Yellow%20Mustard%20Oil%20(500ml%20-%20₹245)" target="_blank" class="whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order
+                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
                 </div>
-                <div class="product-card" style="opacity:0.7;">
+                <div class="product-card disabled" data-name="Peanut Oil" data-price="0">
                     <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
                     <h4>Peanut Oil</h4>
                     <div class="price" style="color:#e74c3c; font-size:1rem;">⛔ Out of Stock</div>
                     <span class="tag">500ml Bottle</span><br>
                     <span class="tag-out">Currently Unavailable</span>
                 </div>
-                <div class="product-card" style="opacity:0.7;">
+                <div class="product-card disabled" data-name="Coconut Oil" data-price="0">
                     <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
                     <h4>Coconut Oil</h4>
                     <div class="price" style="color:#e74c3c; font-size:1rem;">⛔ Out of Stock</div>
@@ -1051,12 +1228,25 @@
     </div>
 </section>
 
-<!-- ========== PROCESS SECTION (LINKED TO QUALITY SLIDE) ========== -->
+<!-- ========== CART MODAL ========== -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-box">
+        <button class="cart-close" id="cartClose">&times;</button>
+        <h3>🛒 Your Cart</h3>
+        <div id="cartItems">
+            <div class="empty-cart">Your cart is empty. Start shopping!</div>
+        </div>
+        <div class="cart-total" id="cartTotal" style="display:none;">
+            Total: ₹<span id="totalAmount">0</span>
+        </div>
+    </div>
+</div>
+
+<!-- ========== PROCESS SECTION ========== -->
 <section id="process">
     <div class="container">
         <div class="section-title">Our <span>Manufacturing Process</span></div>
         <div class="section-sub">From farm to your kitchen — quality at every step</div>
-
         <div class="process-grid">
             <div class="process-step">
                 <span class="step-number">01</span>
@@ -1064,35 +1254,30 @@
                 <h4>Farm Sourcing</h4>
                 <p>We handpick the finest seeds, spices, and mustard from trusted local farms to ensure premium quality from the very beginning.</p>
             </div>
-
             <div class="process-step">
                 <span class="step-number">02</span>
-                <span class="step-icon">☀️</span>
-                <h4>Sun-Drying</h4>
-                <p>Natural sun-drying preserves the authentic flavor, color, and essential oils of our spices, keeping them fresh and aromatic.</p>
+                <span class="step-icon">🔥</span>
+                <h4>Roasting &amp; Dehydrating</h4>
+                <p>Modern roasting and dehydrating machines gently remove moisture while locking in natural flavors, essential oils, and vibrant colors.</p>
             </div>
-
             <div class="process-step">
                 <span class="step-number">03</span>
                 <span class="step-icon">⚙️</span>
                 <h4>Grinding &amp; Pressing</h4>
                 <p>Traditional grinding methods for spices and cold-pressing techniques for oils retain maximum nutrients and natural goodness.</p>
             </div>
-
             <div class="process-step">
                 <span class="step-number">04</span>
                 <span class="step-icon">🔬</span>
                 <h4>Quality Testing</h4>
                 <p>Every batch undergoes rigorous quality checks for purity, aroma, and taste to ensure you receive only the finest products.</p>
             </div>
-
             <div class="process-step">
                 <span class="step-number">05</span>
                 <span class="step-icon">🏷️</span>
                 <h4>Hygienic Packaging</h4>
                 <p>Our spices and oils are packed in state-of-the-art facilities to retain freshness, aroma, and nutritional value.</p>
             </div>
-
             <div class="process-step">
                 <span class="step-number">06</span>
                 <span class="step-icon">🚚</span>
@@ -1133,7 +1318,6 @@
     <div class="container">
         <div class="section-title">Get in <span>Touch</span></div>
         <div class="section-sub" style="color:#ddd;">We'd love to hear from you. Reach out to us anytime.</div>
-
         <div class="contact-grid">
             <div class="contact-item">
                 <h4><i class="fas fa-building"></i> Head Office</h4>
@@ -1155,7 +1339,6 @@
                 </p>
             </div>
         </div>
-
         <div class="social-bar">
             <a href="https://www.instagram.com/kunikazest" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
             <a href="https://www.facebook.com/kunikaharminderkaur/" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
@@ -1178,5 +1361,108 @@
     </div>
 </footer>
 
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+    // ===== CART FUNCTIONALITY =====
+    let cart = [];
+
+    function addToCart(button) {
+        const card = button.closest('.product-card');
+        if (card.classList.contains('disabled')) return;
+
+        const name = card.dataset.name;
+        const price = parseInt(card.dataset.price);
+
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.qty += 1;
+        } else {
+            cart.push({ name, price, qty: 1 });
+        }
+
+        updateCartUI();
+        button.innerHTML = '✅ Added';
+        setTimeout(() => {
+            button.innerHTML = '<i class="fas fa-cart-plus"></i> Add';
+        }, 1500);
+    }
+
+    function updateCartUI() {
+        const cartCount = document.getElementById('cartCount');
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        cartCount.textContent = totalItems;
+
+        const cartItemsDiv = document.getElementById('cartItems');
+        const cartTotalDiv = document.getElementById('cartTotal');
+        const totalAmountSpan = document.getElementById('totalAmount');
+
+        if (cart.length === 0) {
+            cartItemsDiv.innerHTML = '<div class="empty-cart">Your cart is empty. Start shopping!</div>';
+            cartTotalDiv.style.display = 'none';
+            return;
+        }
+
+        let html = '';
+        let total = 0;
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.qty;
+            total += itemTotal;
+            html += `
+                <div class="cart-item">
+                    <span class="item-name">${item.name}</span>
+                    <span class="item-price">₹${item.price}</span>
+                    <div class="item-qty">
+                        <button onclick="updateQty(${index}, -1)">−</button>
+                        <span>${item.qty}</span>
+                        <button onclick="updateQty(${index}, 1)">+</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        cartItemsDiv.innerHTML = html;
+        cartTotalDiv.style.display = 'block';
+        totalAmountSpan.textContent = total;
+    }
+
+    function updateQty(index, change) {
+        const item = cart[index];
+        if (!item) return;
+        item.qty += change;
+        if (item.qty <= 0) {
+            cart.splice(index, 1);
+        }
+        updateCartUI();
+    }
+
+    // ===== CART MODAL =====
+    const cartModal = document.getElementById('cartModal');
+    const cartTrigger = document.getElementById('cartTrigger');
+    const cartClose = document.getElementById('cartClose');
+
+    cartTrigger.addEventListener('click', () => {
+        cartModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    cartClose.addEventListener('click', () => {
+        cartModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    cartModal.addEventListener('click', (e) => {
+        if (e.target === cartModal) {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+</script>
 </body>
 </html>
