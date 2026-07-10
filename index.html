@@ -16,7 +16,6 @@
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* ========== TOP OFFER BAR ========== */
         .top-bar {
             background: #E87A2A;
             color: #fff;
@@ -33,7 +32,6 @@
             margin: 0 5px;
         }
 
-        /* ========== HEADER ========== */
         header {
             background: #fff;
             padding: 10px 0;
@@ -65,9 +63,7 @@
             font-weight: 800;
             color: #2E7D32;
         }
-        .logo span {
-            color: #2E7D32;
-        }
+        .logo span { color: #2E7D32; }
         .logo .tagline {
             font-size: 10px;
             font-weight: 600;
@@ -111,9 +107,7 @@
             left: 0;
             z-index: 200;
         }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .dropdown:hover .dropdown-content { display: block; }
         .dropdown-content a {
             display: block;
             padding: 8px 20px;
@@ -224,9 +218,7 @@
             font-weight: 800;
             text-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
-        .slider-slide h2 span {
-            color: #E87A2A;
-        }
+        .slider-slide h2 span { color: #E87A2A; }
         .slider-slide p {
             font-size: 1.2rem;
             max-width: 600px;
@@ -257,7 +249,6 @@
             100% { transform: translateX(0); }
         }
 
-        /* ========== SECTION TITLES ========== */
         .section-title {
             text-align: center;
             font-size: 2.2rem;
@@ -265,9 +256,7 @@
             color: #3D2B1F;
             font-weight: 700;
         }
-        .section-title span {
-            color: #E87A2A;
-        }
+        .section-title span { color: #E87A2A; }
         .section-sub {
             text-align: center;
             max-width: 600px;
@@ -295,9 +284,7 @@
             color: #2E7D32;
             margin-bottom: 10px;
         }
-        .about-grid .text h3 span {
-            color: #E87A2A;
-        }
+        .about-grid .text h3 span { color: #E87A2A; }
         .about-grid .text p {
             color: #555;
             margin-bottom: 15px;
@@ -350,49 +337,38 @@
             font-size: 1.2rem;
         }
         @media (max-width: 600px) {
-            .cert-bar .cert-item {
-                display: block;
-                margin: 10px 0;
-            }
+            .cert-bar .cert-item { display: block; margin: 10px 0; }
         }
 
-        /* ========== CATEGORY GRID ========== */
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
+        /* ========== PRODUCTS BY CATEGORY ========== */
+        #products {
+            padding: 20px 0 60px;
+            background: #FFF8F0;
+        }
+        .category-section {
             margin-bottom: 50px;
         }
-        .category-card {
-            background: #fff;
-            padding: 30px 20px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: 0.3s;
-            border: 1px solid #f0ebe0;
-            cursor: pointer;
+        .category-section:last-child { margin-bottom: 0; }
+        .category-heading {
+            font-size: 1.8rem;
+            color: #2E7D32;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #E87A2A;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .category-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-            border-color: #E87A2A;
-        }
-        .category-card i {
-            font-size: 2.8rem;
+        .category-heading i {
             color: #E87A2A;
-            margin-bottom: 12px;
+            font-size: 1.6rem;
         }
-        .category-card h4 {
-            color: #3D2B1F;
-        }
-        .category-card p {
+        .category-heading small {
             font-size: 0.9rem;
+            font-weight: 400;
             color: #888;
         }
-
-        /* ========== PRODUCTS ========== */
-        #products { padding: 20px 0 60px; background: #FFF8F0; }
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -424,6 +400,7 @@
             border-radius: 50px;
         }
         .product-card .badge.bestseller { background: #C0392B; }
+        .product-card .badge.spicy { background: #D35400; }
         .product-card .icon {
             font-size: 2.5rem;
             color: #E87A2A;
@@ -473,9 +450,7 @@
             justify-content: center;
             align-items: center;
         }
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
         .modal-box {
             background: #fff;
             max-width: 550px;
@@ -548,7 +523,6 @@
             color: #aaa;
             margin-top: 3px;
         }
-
         .add-review {
             margin-top: 20px;
             padding-top: 15px;
@@ -580,9 +554,7 @@
             cursor: pointer;
             margin-bottom: 10px;
         }
-        .add-review .star-select .active {
-            color: #E87A2A;
-        }
+        .add-review .star-select .active { color: #E87A2A; }
         .btn-submit-review {
             background: #E87A2A;
             color: #fff;
@@ -593,9 +565,7 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .btn-submit-review:hover {
-            background: #2E7D32;
-        }
+        .btn-submit-review:hover { background: #2E7D32; }
 
         /* ========== CONTACT ========== */
         #contact {
@@ -700,6 +670,7 @@
             .logo-img { width: 35px; height: 35px; }
             .logo { font-size: 20px; }
             .logo .tagline { font-size: 9px; }
+            .category-heading { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -714,7 +685,6 @@
 <header>
     <div class="container header-content">
         <div class="logo-wrapper">
-            <!-- BRAND LOGO -->
             <img src="https://i.postimg.cc/8kqqqcp9/Kunika-Zest-FE.png" alt="Kunika Zest Logo" class="logo-img" />
             <div class="logo">
                 Kunika <span>Zest</span>
@@ -727,10 +697,10 @@
             <div class="dropdown">
                 <a href="#products">Products <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="#products">🌿 Whole Spices</a>
-                    <a href="#products">🧂 Blended Masalas</a>
-                    <a href="#products">⚡ Powder Spices</a>
-                    <a href="#products">🫒 Oils</a>
+                    <a href="#whole-spices">🌿 Whole Spices</a>
+                    <a href="#blended-masalas">🧂 Blended Masalas</a>
+                    <a href="#powder-spices">⚡ Powder Spices</a>
+                    <a href="#oils">🫒 Oils</a>
                 </div>
             </div>
             <a href="#contact">Contact</a>
@@ -741,7 +711,6 @@
                 <input type="text" placeholder="Search..." />
                 <i class="fas fa-search"></i>
             </div>
-            <!-- HEART ICON - OPENS REVIEWS MODAL -->
             <a id="reviewsTrigger">
                 <i class="fas fa-heart" style="color:#E87A2A;"></i>
                 <span class="rating-badge">5.0 ★</span>
@@ -763,19 +732,16 @@
             <p>From farm to your kitchen — authentic taste of Kunika Zest</p>
             <a href="#products" class="btn-slide">Shop Now</a>
         </div>
-
         <div class="slider-slide" style="background-image: url('https://i.ibb.co/XfdXVvzd/Gemini-Generated-Image-279he5279he5279h-1.png');">
             <h2>Cold-Pressed <span>Oils</span></h2>
             <p>Mustard &amp; Peanut Oil — pure, natural, and nutrient-rich</p>
             <a href="#products" class="btn-slide">Explore Oils</a>
         </div>
-
         <div class="slider-slide" style="background-image: url('https://i.postimg.cc/1RWPgsrb/masala-quality.png');">
             <h2>Quality <span>Masalas</span></h2>
             <p>Blended with love — the perfect taste of Indian spices</p>
             <a href="#products" class="btn-slide">View Blends</a>
         </div>
-
         <div class="slider-slide" style="background-image: url('https://res.cloudinary.com/xhncefmz/image/upload/v1783658928/Gemini_Generated_Image_ru3qwpru3qwpru3q_z6rx1a.png');">
             <h2>Direct Customers, Retailers, <span>Wholesalers &amp; Distributors</span></h2>
             <p>Trusted Indian flavors delivered to your doorstep</p>
@@ -789,7 +755,6 @@
     <div class="container">
         <div class="section-title">About <span>Kunika</span></div>
         <div class="section-sub">We bring you the purest spices and edible oils, crafted with care from farm to your kitchen.</div>
-
         <div class="about-grid">
             <div class="text">
                 <h3>From Our <span>Barn</span> to Your <span>Home</span></h3>
@@ -816,129 +781,274 @@
     </div>
 </section>
 
-<!-- ========== CATEGORY GRID ========== -->
-<div class="container">
-    <div class="section-title">Shop by <span>Category</span></div>
-    <div class="category-grid">
-        <div class="category-card">
-            <i class="fas fa-seedling"></i>
-            <h4>Whole Spices</h4>
-            <p>Jeera, Tej Patta, Laung &amp; more</p>
-        </div>
-        <div class="category-card">
-            <i class="fas fa-mortar-pestle"></i>
-            <h4>Blended Masalas</h4>
-            <p>Garam, Chhole, Meat Masala &amp; more</p>
-        </div>
-        <div class="category-card">
-            <i class="fas fa-bolt"></i>
-            <h4>Powder Spices</h4>
-            <p>Haldi, Dhaniya, Red Chilli &amp; more</p>
-        </div>
-        <div class="category-card">
-            <i class="fas fa-flask"></i>
-            <h4>Oils</h4>
-            <p>Mustard Oil, Peanut Oil</p>
-        </div>
-    </div>
-</div>
-
-<!-- ========== PRODUCTS ========== -->
+<!-- ========== PRODUCTS BY CATEGORY ========== -->
 <section id="products">
     <div class="container">
         <div class="section-title">Our <span>Products</span></div>
         <div class="section-sub">Click <i class="fab fa-whatsapp" style="color:#25d366;"></i> to order directly on WhatsApp</div>
 
-        <div class="product-grid">
-            <div class="product-card">
-                <span class="badge bestseller">⭐ Bestseller</span>
-                <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
-                <h4>Haldi Powder</h4>
-                <div class="price">₹180 / kg</div>
-                <span class="tag">Pure Turmeric</span>
-                <br>
-                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Haldi%20Powder%20(₹180/kg)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order
-                </a>
+        <!-- ===== CATEGORY 1: WHOLE SPICES ===== -->
+        <div class="category-section" id="whole-spices">
+            <div class="category-heading">
+                <i class="fas fa-seedling"></i> Whole Spices
+                <small>— Fresh &amp; aromatic</small>
             </div>
-
-            <div class="product-card">
-                <div class="icon"><i class="fas fa-seedling"></i></div>
-                <h4>Dhaniya Powder</h4>
-                <div class="price">₹160 / kg</div>
-                <span class="tag">Premium Coriander</span>
-                <br>
-                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Dhaniya%20Powder%20(₹160/kg)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order
-                </a>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge bestseller">⭐ Bestseller</span>
+                    <div class="icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Cumin / Jeera</h4>
+                    <div class="price">₹200 / kg</div>
+                    <span class="tag">Premium Quality</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Cumin%20(₹200/kg)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Tej Patta (Bay Leaf)</h4>
+                    <div class="price">₹120 / 100g</div>
+                    <span class="tag">Aromatic</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Tej%20Patta%20(₹120/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Laung (Cloves)</h4>
+                    <div class="price">₹150 / 100g</div>
+                    <span class="tag">Strong Flavor</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Laung%20(₹150/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Green Cardamom</h4>
+                    <div class="price">₹280 / 100g</div>
+                    <span class="tag">Premium</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Green%20Cardamom%20(₹280/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Black Pepper</h4>
+                    <div class="price">₹250 / 100g</div>
+                    <span class="tag">Premium</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Black%20Pepper%20(₹250/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Cassia (Dalchini)</h4>
+                    <div class="price">₹130 / 100g</div>
+                    <span class="tag">Aromatic</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Cassia%20(₹130/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
             </div>
+        </div>
 
-            <div class="product-card">
-                <span class="badge">🔥 Spicy</span>
-                <div class="icon"><i class="fas fa-fire"></i></div>
-                <h4>Red Chilli Powder</h4>
-                <div class="price">₹220 / kg</div>
-                <span class="tag">Kashmiri / Guntur</span>
-                <br>
-                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Red%20Chilli%20Powder%20(₹220/kg)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order
-                </a>
+        <!-- ===== CATEGORY 2: BLENDED MASALAS ===== -->
+        <div class="category-section" id="blended-masalas">
+            <div class="category-heading">
+                <i class="fas fa-mortar-pestle"></i> Blended Masalas
+                <small>— Signature blends</small>
             </div>
-
-            <div class="product-card">
-                <div class="icon"><i class="fas fa-leaf"></i></div>
-                <h4>Cumin / Jeera</h4>
-                <div class="price">₹200 / kg</div>
-                <span class="tag">Premium Cumin</span>
-                <br>
-                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Cumin%20(₹200/kg)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order
-                </a>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge bestseller">⭐ Bestseller</span>
+                    <div class="icon"><i class="fas fa-mix"></i></div>
+                    <h4>Garam Masala</h4>
+                    <div class="price">₹120 / 100g</div>
+                    <span class="tag">Signature Blend</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Garam%20Masala%20(₹120/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-mix"></i></div>
+                    <h4>Chhole Masala</h4>
+                    <div class="price">₹100 / 100g</div>
+                    <span class="tag">Signature Blend</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Chhole%20Masala%20(₹100/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-mix"></i></div>
+                    <h4>Meat Masala</h4>
+                    <div class="price">₹110 / 100g</div>
+                    <span class="tag">Signature Blend</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Meat%20Masala%20(₹110/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-mix"></i></div>
+                    <h4>Kitchen King</h4>
+                    <div class="price">₹90 / 100g</div>
+                    <span class="tag">All-purpose</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Kitchen%20King%20(₹90/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-mix"></i></div>
+                    <h4>Pav Bhaji Masala</h4>
+                    <div class="price">₹95 / 100g</div>
+                    <span class="tag">Street Food Special</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Pav%20Bhaji%20Masala%20(₹95/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-mix"></i></div>
+                    <h4>Sambar Masala</h4>
+                    <div class="price">₹85 / 100g</div>
+                    <span class="tag">South Indian Special</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Sambar%20Masala%20(₹85/100g)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
             </div>
+        </div>
 
-            <div class="product-card">
-                <span class="badge bestseller">⭐ Bestseller</span>
-                <div class="icon"><i class="fas fa-flask"></i></div>
-                <h4>Mustard Oil</h4>
-                <div class="price">₹280 / L</div>
-                <span class="tag">Cold-Pressed</span>
-                <br>
-                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Mustard%20Oil%20(₹280/L)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order
-                </a>
+        <!-- ===== CATEGORY 3: POWDER SPICES ===== -->
+        <div class="category-section" id="powder-spices">
+            <div class="category-heading">
+                <i class="fas fa-bolt"></i> Powder Spices
+                <small>— Pure &amp; fresh ground spices</small>
             </div>
-
-            <div class="product-card">
-                <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
-                <h4>Peanut Oil</h4>
-                <div class="price">₹320 / L</div>
-                <span class="tag">Cold-Pressed</span>
-                <br>
-                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Peanut%20Oil%20(₹320/L)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order
-                </a>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge bestseller">⭐ Bestseller</span>
+                    <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
+                    <h4>Haldi Powder</h4>
+                    <div class="price">₹180 / kg</div>
+                    <span class="tag">Pure Turmeric</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Haldi%20Powder%20(₹180/kg)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-seedling"></i></div>
+                    <h4>Dhaniya Powder</h4>
+                    <div class="price">₹160 / kg</div>
+                    <span class="tag">Premium Coriander</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Dhaniya%20Powder%20(₹160/kg)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <span class="badge spicy">🔥 Spicy</span>
+                    <div class="icon"><i class="fas fa-fire"></i></div>
+                    <h4>Red Chilli Powder</h4>
+                    <div class="price">₹220 / kg</div>
+                    <span class="tag">Kashmiri / Guntur</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Red%20Chilli%20Powder%20(₹220/kg)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Jeera Powder</h4>
+                    <div class="price">₹190 / kg</div>
+                    <span class="tag">Premium Cumin</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Jeera%20Powder%20(₹190/kg)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
+                    <h4>Amchur Powder</h4>
+                    <div class="price">₹140 / kg</div>
+                    <span class="tag">Dry Mango</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Amchur%20Powder%20(₹140/kg)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
+                    <h4>Kashmiri Chilli</h4>
+                    <div class="price">₹240 / kg</div>
+                    <span class="tag">Mild &amp; Colorful</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Kashmiri%20Chilli%20(₹240/kg)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
             </div>
+        </div>
 
-            <div class="product-card">
-                <div class="icon"><i class="fas fa-mix"></i></div>
-                <h4>Garam Masala</h4>
-                <div class="price">₹120 / 100g</div>
-                <span class="tag">Signature Blend</span>
-                <br>
-                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Garam%20Masala%20(₹120/100g)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order
-                </a>
+        <!-- ===== CATEGORY 4: OILS ===== -->
+        <div class="category-section" id="oils">
+            <div class="category-heading">
+                <i class="fas fa-flask"></i> Oils
+                <small>— Cold-pressed &amp; pure</small>
             </div>
-
-            <div class="product-card">
-                <div class="icon"><i class="fas fa-mix"></i></div>
-                <h4>Chhole Masala</h4>
-                <div class="price">₹100 / 100g</div>
-                <span class="tag">Signature Blend</span>
-                <br>
-                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Chhole%20Masala%20(₹100/100g)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order
-                </a>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge bestseller">⭐ Bestseller</span>
+                    <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
+                    <h4>Mustard Oil</h4>
+                    <div class="price">₹280 / L</div>
+                    <span class="tag">Cold-Pressed</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Mustard%20Oil%20(₹280/L)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
+                    <h4>Peanut Oil</h4>
+                    <div class="price">₹320 / L</div>
+                    <span class="tag">Cold-Pressed</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Peanut%20Oil%20(₹320/L)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
+                    <h4>Coconut Oil</h4>
+                    <div class="price">₹250 / L</div>
+                    <span class="tag">Cold-Pressed</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Coconut%20Oil%20(₹250/L)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
+                <div class="product-card">
+                    <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
+                    <h4>Gingelly Oil</h4>
+                    <div class="price">₹290 / L</div>
+                    <span class="tag">Cold-Pressed</span>
+                    <br>
+                    <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Gingelly%20Oil%20(₹290/L)" target="_blank" class="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Order
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -954,36 +1064,26 @@
             <span class="stars">★★★★★</span>
             <span style="color:#888; font-size:0.9rem;">(7 Google reviews)</span>
         </div>
-
-        <!-- Existing Reviews -->
         <div id="reviewsList">
             <div class="review-item">
                 <div class="reviewer">Anjali Sharma</div>
                 <div class="review-stars">★★★★★</div>
-                <div class="review-text">"The haldi has such a vibrant color! I can really taste the freshness. It's become a staple in my kitchen."</div>
+                <div class="review-text">"The haldi has such a vibrant color! I can really taste the freshness."</div>
                 <div class="review-date">2 days ago</div>
             </div>
             <div class="review-item">
                 <div class="reviewer">Rajesh Kumar</div>
                 <div class="review-stars">★★★★★</div>
-                <div class="review-text">"Best mustard oil I've bought in years. Reminds me of my grandmother's kitchen. Absolutely authentic!"</div>
+                <div class="review-text">"Best mustard oil I've bought in years. Absolutely authentic!"</div>
                 <div class="review-date">1 week ago</div>
             </div>
             <div class="review-item">
                 <div class="reviewer">Priya Mehta</div>
                 <div class="review-stars">★★★★★</div>
-                <div class="review-text">"The red chilli powder has the perfect kick. I love that it's pure with no added colors. Highly recommend!"</div>
+                <div class="review-text">"The red chilli powder has the perfect kick. Highly recommend!"</div>
                 <div class="review-date">2 weeks ago</div>
             </div>
-            <div class="review-item">
-                <div class="reviewer">Google User</div>
-                <div class="review-stars">★★★★★</div>
-                <div class="review-text">"Excellent quality spices! Very fresh and aromatic. Will definitely order again."</div>
-                <div class="review-date">1 month ago</div>
-            </div>
         </div>
-
-        <!-- Add Review Section -->
         <div class="add-review">
             <h4>✍️ Write a Review</h4>
             <input type="text" id="reviewerName" placeholder="Your Name" />
@@ -1005,7 +1105,6 @@
     <div class="container">
         <div class="section-title">Get in <span>Touch</span></div>
         <div class="section-sub" style="color:#ddd;">We'd love to hear from you. Reach out to us anytime.</div>
-
         <div class="contact-grid">
             <div class="contact-item">
                 <h4><i class="fas fa-building"></i> Head Office</h4>
@@ -1013,13 +1112,11 @@
                 <p><i class="fas fa-phone"></i> +91 98183 45629</p>
                 <p><i class="fas fa-envelope"></i> info@kunikazest.com</p>
             </div>
-
             <div class="contact-item">
                 <h4><i class="fas fa-industry"></i> Manufacturing</h4>
                 <p>B-8, Mayapuri Industrial Area,<br>Phase 1, New Delhi</p>
                 <p><i class="fas fa-clock"></i> Mon–Sat: 9 AM – 6 PM</p>
             </div>
-
             <div class="contact-item">
                 <h4><i class="fas fa-map-pin"></i> Find Us</h4>
                 <p>
@@ -1029,7 +1126,6 @@
                 </p>
             </div>
         </div>
-
         <div class="social-bar">
             <a href="https://www.instagram.com/kunikazest" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
             <a href="https://www.facebook.com/kunikaharminderkaur/" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
@@ -1052,22 +1148,19 @@
     </div>
 </footer>
 
-<!-- ========== JAVASCRIPT FOR REVIEWS MODAL ========== -->
+<!-- ========== JAVASCRIPT ========== -->
 <script>
-    // Get elements
     const modal = document.getElementById('reviewsModal');
     const trigger = document.getElementById('reviewsTrigger');
     const closeBtn = document.getElementById('modalClose');
     const stars = document.querySelectorAll('#starSelect span');
     let selectedRating = 0;
 
-    // Open modal
     trigger.addEventListener('click', () => {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
 
-    // Close modal
     function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = 'auto';
@@ -1077,7 +1170,6 @@
         if (e.target === modal) closeModal();
     });
 
-    // Star selection
     stars.forEach(star => {
         star.addEventListener('click', function() {
             selectedRating = parseInt(this.dataset.value);
@@ -1108,17 +1200,13 @@
         });
     });
 
-    // Submit review
     document.getElementById('submitReview').addEventListener('click', function() {
         const name = document.getElementById('reviewerName').value.trim();
         const review = document.getElementById('reviewText').value.trim();
-
         if (!name || !review || selectedRating === 0) {
             alert('Please fill in your name, rating, and review.');
             return;
         }
-
-        // Create new review element
         const reviewsList = document.getElementById('reviewsList');
         const newReview = document.createElement('div');
         newReview.className = 'review-item';
@@ -1130,8 +1218,6 @@
             <div class="review-date">Just now</div>
         `;
         reviewsList.prepend(newReview);
-
-        // Clear form
         document.getElementById('reviewerName').value = '';
         document.getElementById('reviewText').value = '';
         selectedRating = 0;
@@ -1140,15 +1226,12 @@
             s.style.color = '#ddd';
             s.classList.remove('active');
         });
-
         alert('Thank you for your review! 🌟');
     });
 
-    // Close with Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
 </script>
-
 </body>
 </html>
