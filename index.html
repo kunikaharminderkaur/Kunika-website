@@ -36,7 +36,7 @@
         /* ========== HEADER ========== */
         header {
             background: #fff;
-            padding: 12px 0;
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -48,10 +48,20 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
+        }
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
         }
         .logo {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             color: #2E7D32;
         }
@@ -59,11 +69,11 @@
             color: #2E7D32;
         }
         .logo .tagline {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             display: block;
             color: #E87A2A;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             font-style: italic;
         }
 
@@ -71,11 +81,11 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 5px;
+            gap: 3px;
         }
         nav a {
             color: #3D2B1F;
-            padding: 8px 14px;
+            padding: 6px 12px;
             font-weight: 500;
             font-size: 14px;
             border-radius: 4px;
@@ -117,13 +127,14 @@
         .header-icons {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         .header-icons a {
             color: #3D2B1F;
             font-size: 18px;
             position: relative;
             transition: 0.3s;
+            cursor: pointer;
         }
         .header-icons a:hover { color: #E87A2A; }
         .cart-count {
@@ -137,20 +148,31 @@
             padding: 2px 7px;
             border-radius: 50%;
         }
+        .rating-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #2E7D32;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 50px;
+        }
         .search-box {
             display: flex;
             align-items: center;
             background: #F5F0EB;
             border-radius: 50px;
-            padding: 5px 15px;
+            padding: 4px 12px;
         }
         .search-box input {
             border: none;
             background: transparent;
-            padding: 6px 10px;
+            padding: 5px 8px;
             font-size: 13px;
             outline: none;
-            width: 120px;
+            width: 100px;
         }
         .search-box i { color: #888; }
 
@@ -251,6 +273,87 @@
             max-width: 600px;
             margin: 0 auto 40px;
             color: #888;
+        }
+
+        /* ========== ABOUT ========== */
+        #about {
+            padding: 60px 0;
+            background: #fff;
+        }
+        .about-grid {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-grid .text {
+            flex: 1;
+            min-width: 280px;
+        }
+        .about-grid .text h3 {
+            font-size: 2rem;
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+        .about-grid .text h3 span {
+            color: #E87A2A;
+        }
+        .about-grid .text p {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        .about-grid .text .features {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .about-grid .text .features span {
+            background: #FFF8F0;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2E7D32;
+            border: 1px solid #E87A2A;
+        }
+        .about-grid .image {
+            flex: 1;
+            min-width: 280px;
+            height: 300px;
+            border-radius: 20px;
+            background-image: url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format');
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #E87A2A;
+        }
+
+        /* ========== CERTIFICATION BAR ========== */
+        .cert-bar {
+            background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+            border-top: 3px solid #E87A2A;
+            border-bottom: 3px solid #E87A2A;
+        }
+        .cert-bar .cert-item {
+            display: inline-block;
+            margin: 0 30px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .cert-bar .cert-item i {
+            color: #E87A2A;
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        @media (max-width: 600px) {
+            .cert-bar .cert-item {
+                display: block;
+                margin: 10px 0;
+            }
         }
 
         /* ========== CATEGORY GRID ========== */
@@ -357,26 +460,141 @@
         }
         .whatsapp-order:hover { background: #1ebe5c; transform: scale(1.05); }
 
-        /* ========== ABOUT ========== */
-        #about {
-            padding: 60px 0;
+        /* ========== REVIEWS MODAL ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
             background: #fff;
+            max-width: 550px;
+            width: 90%;
+            max-height: 80vh;
+            border-radius: 20px;
+            padding: 30px;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeIn 0.3s ease;
         }
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+        @keyframes fadeIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
-        .about-content p {
-            color: #555;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #888;
+            cursor: pointer;
+            transition: 0.3s;
+            background: none;
+            border: none;
         }
-        .about-content .tagline {
-            font-size: 1.3rem;
+        .modal-close:hover { color: #E87A2A; }
+        .modal-box h3 {
+            color: #2E7D32;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+        .modal-box .rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .modal-box .rating-summary .stars {
             color: #E87A2A;
+            font-size: 1.4rem;
+        }
+        .modal-box .rating-summary .score {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2E7D32;
+        }
+        .review-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0ebe0;
+        }
+        .review-item:last-child { border-bottom: none; }
+        .review-item .reviewer {
             font-weight: 600;
-            font-style: italic;
+            color: #2E7D32;
+        }
+        .review-item .review-stars {
+            color: #E87A2A;
+            font-size: 0.9rem;
+        }
+        .review-item .review-text {
+            color: #555;
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+        .review-item .review-date {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-top: 3px;
+        }
+
+        .add-review {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #E87A2A;
+        }
+        .add-review h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+        .add-review input,
+        .add-review textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-family: inherit;
+        }
+        .add-review textarea {
+            height: 70px;
+            resize: vertical;
+        }
+        .add-review .star-select {
+            display: flex;
+            gap: 8px;
+            font-size: 1.6rem;
+            color: #ddd;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .add-review .star-select .active {
+            color: #E87A2A;
+        }
+        .btn-submit-review {
+            background: #E87A2A;
+            color: #fff;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-submit-review:hover {
+            background: #2E7D32;
         }
 
         /* ========== CONTACT ========== */
@@ -470,13 +688,18 @@
 
         @media (max-width: 768px) {
             .header-content { flex-direction: column; gap: 10px; }
-            .search-box input { width: 80px; }
-            nav a { padding: 5px 10px; font-size: 12px; }
+            .search-box input { width: 70px; }
+            nav a { padding: 5px 8px; font-size: 12px; }
             .slider-container { height: 280px; }
             .slider-slide h2 { font-size: 1.8rem; }
             .slider-slide p { font-size: 0.95rem; }
             .section-title { font-size: 1.6rem; }
             .whatsapp-float { width: 45px; height: 45px; font-size: 22px; bottom: 20px; right: 20px; }
+            .about-grid { flex-direction: column; }
+            .cert-bar .cert-item { display: block; margin: 10px 0; }
+            .logo-img { width: 35px; height: 35px; }
+            .logo { font-size: 20px; }
+            .logo .tagline { font-size: 9px; }
         }
     </style>
 </head>
@@ -490,9 +713,13 @@
 <!-- ========== HEADER ========== -->
 <header>
     <div class="container header-content">
-        <div class="logo">
-            Kunika <span>Zest</span>
-            <span class="tagline">"Freshness you can smell, Purity you can taste"</span>
+        <div class="logo-wrapper">
+            <!-- BRAND LOGO -->
+            <img src="https://i.postimg.cc/8kqqqcp9/Kunika-Zest-FE.png" alt="Kunika Zest Logo" class="logo-img" />
+            <div class="logo">
+                Kunika <span>Zest</span>
+                <span class="tagline">"Freshness you can smell, Purity you can taste"</span>
+            </div>
         </div>
 
         <nav>
@@ -514,7 +741,11 @@
                 <input type="text" placeholder="Search..." />
                 <i class="fas fa-search"></i>
             </div>
-            <a href="#"><i class="far fa-heart"></i></a>
+            <!-- HEART ICON - OPENS REVIEWS MODAL -->
+            <a id="reviewsTrigger">
+                <i class="fas fa-heart" style="color:#E87A2A;"></i>
+                <span class="rating-badge">5.0 ★</span>
+            </a>
             <a href="#"><i class="far fa-user"></i></a>
             <a href="#">
                 <i class="fas fa-shopping-cart"></i>
@@ -524,31 +755,27 @@
     </div>
 </header>
 
-<!-- ========== HERO SLIDER - ALL 4 IMAGES CORRECTLY MAPPED ========== -->
+<!-- ========== HERO SLIDER ========== -->
 <div class="slider-container">
     <div class="slider-track">
-        <!-- Slide 1: Spices & Oils -->
         <div class="slider-slide" style="background-image: url('https://i.postimg.cc/gJmX0mHp/Gemini-Generated-Image-8re7cg8re7cg8re7.png');">
             <h2>Pure <span>Spices</span> &amp; <span>Oils</span></h2>
             <p>From farm to your kitchen — authentic taste of Kunika Zest</p>
             <a href="#products" class="btn-slide">Shop Now</a>
         </div>
 
-        <!-- Slide 2: Cold-Pressed Oils -->
         <div class="slider-slide" style="background-image: url('https://i.ibb.co/XfdXVvzd/Gemini-Generated-Image-279he5279he5279h-1.png');">
             <h2>Cold-Pressed <span>Oils</span></h2>
             <p>Mustard &amp; Peanut Oil — pure, natural, and nutrient-rich</p>
             <a href="#products" class="btn-slide">Explore Oils</a>
         </div>
 
-        <!-- Slide 3: Quality Masalas -->
         <div class="slider-slide" style="background-image: url('https://i.postimg.cc/1RWPgsrb/masala-quality.png');">
             <h2>Quality <span>Masalas</span></h2>
             <p>Blended with love — the perfect taste of Indian spices</p>
             <a href="#products" class="btn-slide">View Blends</a>
         </div>
 
-        <!-- Slide 4: Direct Customers, Retailers, Wholesalers & Distributors -->
         <div class="slider-slide" style="background-image: url('https://res.cloudinary.com/xhncefmz/image/upload/v1783658928/Gemini_Generated_Image_ru3qwpru3qwpru3q_z6rx1a.png');">
             <h2>Direct Customers, Retailers, <span>Wholesalers &amp; Distributors</span></h2>
             <p>Trusted Indian flavors delivered to your doorstep</p>
@@ -556,6 +783,38 @@
         </div>
     </div>
 </div>
+
+<!-- ========== ABOUT US ========== -->
+<section id="about">
+    <div class="container">
+        <div class="section-title">About <span>Kunika</span></div>
+        <div class="section-sub">We bring you the purest spices and edible oils, crafted with care from farm to your kitchen.</div>
+
+        <div class="about-grid">
+            <div class="text">
+                <h3>From Our <span>Barn</span> to Your <span>Home</span></h3>
+                <p><strong>Kunika</strong> is a family-run brand rooted in the heart of India. We specialize in premium-quality ground spices — <strong>Haldi, Dhaniya, Red Chilli, Cumin</strong> — and cold-pressed edible oils like <strong>Mustard &amp; Peanut</strong>.</p>
+                <p>Every product is made using traditional methods, preserving the natural aroma, color, and health benefits. We believe in transparency — what you see is what you get.</p>
+                <div class="features">
+                    <span>✅ Authentic &amp; Natural</span>
+                    <span>✅ No Preservatives</span>
+                    <span>✅ Farm-Fresh</span>
+                </div>
+            </div>
+            <div class="image"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CERTIFICATION BAR ========== -->
+<section class="cert-bar">
+    <div class="container">
+        <span class="cert-item"><i class="fas fa-certificate"></i> FSSAI Certified</span>
+        <span class="cert-item"><i class="fas fa-award"></i> Udyam Registered</span>
+        <span class="cert-item"><i class="fas fa-trademark"></i> Trademark Protected</span>
+        <span class="cert-item"><i class="fas fa-shield-alt"></i> Pure &amp; Authentic</span>
+    </div>
+</section>
 
 <!-- ========== CATEGORY GRID ========== -->
 <div class="container">
@@ -685,17 +944,61 @@
     </div>
 </section>
 
-<!-- ========== ABOUT ========== -->
-<section id="about">
-    <div class="container">
-        <div class="section-title">About <span>Kunika Zest</span></div>
-        <div class="about-content">
-            <p class="tagline">"Freshness you can smell, Purity you can taste."</p>
-            <p>At <strong>Kunika Zest</strong>, we specialize in high-quality, hygienically processed spices and premium edible oils. Our range includes ground spices, whole spices, blended masalas, and cold-pressed oils like mustard and peanut oil.</p>
-            <p>We proudly serve <strong>retail customers</strong>, <strong>wholesale buyers</strong>, and <strong>international clients</strong> — bringing trusted Indian flavors to kitchens locally and globally.</p>
+<!-- ========== REVIEWS MODAL ========== -->
+<div class="modal-overlay" id="reviewsModal">
+    <div class="modal-box">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <h3>⭐ Customer Reviews</h3>
+        <div class="rating-summary">
+            <span class="score">5.0</span>
+            <span class="stars">★★★★★</span>
+            <span style="color:#888; font-size:0.9rem;">(7 Google reviews)</span>
+        </div>
+
+        <!-- Existing Reviews -->
+        <div id="reviewsList">
+            <div class="review-item">
+                <div class="reviewer">Anjali Sharma</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">"The haldi has such a vibrant color! I can really taste the freshness. It's become a staple in my kitchen."</div>
+                <div class="review-date">2 days ago</div>
+            </div>
+            <div class="review-item">
+                <div class="reviewer">Rajesh Kumar</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">"Best mustard oil I've bought in years. Reminds me of my grandmother's kitchen. Absolutely authentic!"</div>
+                <div class="review-date">1 week ago</div>
+            </div>
+            <div class="review-item">
+                <div class="reviewer">Priya Mehta</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">"The red chilli powder has the perfect kick. I love that it's pure with no added colors. Highly recommend!"</div>
+                <div class="review-date">2 weeks ago</div>
+            </div>
+            <div class="review-item">
+                <div class="reviewer">Google User</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">"Excellent quality spices! Very fresh and aromatic. Will definitely order again."</div>
+                <div class="review-date">1 month ago</div>
+            </div>
+        </div>
+
+        <!-- Add Review Section -->
+        <div class="add-review">
+            <h4>✍️ Write a Review</h4>
+            <input type="text" id="reviewerName" placeholder="Your Name" />
+            <div class="star-select" id="starSelect">
+                <span data-value="1">☆</span>
+                <span data-value="2">☆</span>
+                <span data-value="3">☆</span>
+                <span data-value="4">☆</span>
+                <span data-value="5">☆</span>
+            </div>
+            <textarea id="reviewText" placeholder="Share your experience with Kunika Zest..."></textarea>
+            <button class="btn-submit-review" id="submitReview">Submit Review</button>
         </div>
     </div>
-</section>
+</div>
 
 <!-- ========== CONTACT ========== -->
 <section id="contact">
@@ -748,6 +1051,104 @@
         &copy; 2026 <span>Kunika Zest</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color:#E87A2A;"></i> from India
     </div>
 </footer>
+
+<!-- ========== JAVASCRIPT FOR REVIEWS MODAL ========== -->
+<script>
+    // Get elements
+    const modal = document.getElementById('reviewsModal');
+    const trigger = document.getElementById('reviewsTrigger');
+    const closeBtn = document.getElementById('modalClose');
+    const stars = document.querySelectorAll('#starSelect span');
+    let selectedRating = 0;
+
+    // Open modal
+    trigger.addEventListener('click', () => {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close modal
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Star selection
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            selectedRating = parseInt(this.dataset.value);
+            stars.forEach(s => {
+                s.classList.toggle('active', parseInt(s.dataset.value) <= selectedRating);
+                s.textContent = parseInt(s.dataset.value) <= selectedRating ? '★' : '☆';
+            });
+        });
+        star.addEventListener('mouseenter', function() {
+            const val = parseInt(this.dataset.value);
+            stars.forEach(s => {
+                const sVal = parseInt(s.dataset.value);
+                s.textContent = sVal <= val ? '★' : '☆';
+                s.style.color = sVal <= val ? '#E87A2A' : '#ddd';
+            });
+        });
+        star.addEventListener('mouseleave', function() {
+            stars.forEach(s => {
+                const sVal = parseInt(s.dataset.value);
+                if (sVal <= selectedRating) {
+                    s.textContent = '★';
+                    s.style.color = '#E87A2A';
+                } else {
+                    s.textContent = '☆';
+                    s.style.color = '#ddd';
+                }
+            });
+        });
+    });
+
+    // Submit review
+    document.getElementById('submitReview').addEventListener('click', function() {
+        const name = document.getElementById('reviewerName').value.trim();
+        const review = document.getElementById('reviewText').value.trim();
+
+        if (!name || !review || selectedRating === 0) {
+            alert('Please fill in your name, rating, and review.');
+            return;
+        }
+
+        // Create new review element
+        const reviewsList = document.getElementById('reviewsList');
+        const newReview = document.createElement('div');
+        newReview.className = 'review-item';
+        const starsText = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+        newReview.innerHTML = `
+            <div class="reviewer">${name}</div>
+            <div class="review-stars">${starsText}</div>
+            <div class="review-text">"${review}"</div>
+            <div class="review-date">Just now</div>
+        `;
+        reviewsList.prepend(newReview);
+
+        // Clear form
+        document.getElementById('reviewerName').value = '';
+        document.getElementById('reviewText').value = '';
+        selectedRating = 0;
+        stars.forEach(s => {
+            s.textContent = '☆';
+            s.style.color = '#ddd';
+            s.classList.remove('active');
+        });
+
+        alert('Thank you for your review! 🌟');
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+</script>
 
 </body>
 </html>
