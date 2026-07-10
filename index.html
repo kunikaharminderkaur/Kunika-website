@@ -3,683 +3,593 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kunika Zest – Pure Spices & Edible Oils | Farm Fresh</title>
-    <meta name="description" content="Buy pure Haldi, Dhaniya, Red Chilli, Cumin, and cold-pressed Mustard & Peanut Oil from Kunika Zest. FSSAI certified, farm-fresh spices delivered to your home." />
+    <title>Kunika Zest - Pure Spices & Edible Oils</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #3D2B1F;
             background: #FFF8F0;
             line-height: 1.6;
         }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            background: linear-gradient(135deg, #3D2B1F 0%, #5A3D2B 100%);
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ========== TOP OFFER BAR ========== */
+        .top-bar {
+            background: #E87A2A;
             color: #fff;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .top-bar span {
+            background: #fff;
+            color: #E87A2A;
+            padding: 2px 12px;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            background: #fff;
             padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            border-bottom: 3px solid #D4A02B;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-bottom: 2px solid #E87A2A;
         }
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 15px;
         }
         .logo {
             font-size: 28px;
             font-weight: 800;
-            letter-spacing: 1px;
+            color: #2E7D32;
         }
         .logo span {
-            color: #D4A02B;
+            color: #2E7D32;
         }
-        .logo small {
+        .logo .tagline {
             font-size: 11px;
-            font-weight: 300;
+            font-weight: 600;
             display: block;
-            color: #E8D5B5;
+            color: #E87A2A;
             letter-spacing: 1px;
+            font-style: italic;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
         }
         nav a {
-            color: #fff;
-            margin-left: 25px;
+            color: #3D2B1F;
+            padding: 8px 14px;
             font-weight: 500;
+            font-size: 14px;
+            border-radius: 4px;
             transition: 0.3s;
-            font-size: 15px;
-            padding: 8px 0;
-            border-bottom: 2px solid transparent;
         }
         nav a:hover {
-            color: #D4A02B;
-            border-bottom-color: #D4A02B;
+            background: #E87A2A;
+            color: #fff;
         }
-        nav i {
-            margin-right: 5px;
-        }
-        .hero {
+        .dropdown {
             position: relative;
-            height: 85vh;
-            min-height: 500px;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 180px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            padding: 8px 0;
+            top: 100%;
+            left: 0;
+            z-index: 200;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 8px 20px;
+            font-size: 13px;
+        }
+        .dropdown-content a:hover {
+            background: #FFF8F0;
+            color: #E87A2A;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-icons a {
+            color: #3D2B1F;
+            font-size: 18px;
+            position: relative;
+            transition: 0.3s;
+        }
+        .header-icons a:hover { color: #E87A2A; }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #E87A2A;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 50%;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #F5F0EB;
+            border-radius: 50px;
+            padding: 5px 15px;
+        }
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 6px 10px;
+            font-size: 13px;
+            outline: none;
+            width: 120px;
+        }
+        .search-box i { color: #888; }
+
+        /* ========== HERO SLIDER ========== */
+        .slider-container {
             overflow: hidden;
+            height: 420px;
+            background: #1e3b2b;
+            position: relative;
+        }
+        .slider-track {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            animation: slide 20s infinite;
+        }
+        .slider-slide {
+            width: 25%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            flex-direction: column;
             color: #fff;
-            background: url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1600&auto=format') center/cover no-repeat;
+            text-align: center;
+            padding: 40px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
         }
-        .hero::before {
+        .slider-slide::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(61, 43, 31, 0.8) 0%, rgba(212, 160, 43, 0.6) 100%);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
-        .hero-content {
+        .slider-slide h2,
+        .slider-slide p,
+        .slider-slide .btn-slide {
             position: relative;
             z-index: 2;
-            padding: 20px;
         }
-        .hero-content .badge {
-            display: inline-block;
-            background: #D4A02B;
-            color: #3D2B1F;
-            padding: 8px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-        .hero-content h1 {
-            font-size: 4.5rem;
+        .slider-slide h2 {
+            font-size: 3rem;
             font-weight: 800;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
-            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
-        .hero-content h1 span {
-            color: #D4A02B;
+        .slider-slide h2 span {
+            color: #E87A2A;
         }
-        .hero-content p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 20px auto;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.5);
-            font-weight: 300;
+        .slider-slide p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            margin-top: 10px;
         }
-        .btn {
+        .btn-slide {
             display: inline-block;
-            background: #D4A02B;
-            color: #3D2B1F;
-            padding: 16px 48px;
-            font-weight: 700;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            box-shadow: 0 4px 25px rgba(212, 160, 43, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .btn:hover {
-            background: #E8B84A;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 35px rgba(212, 160, 43, 0.6);
-        }
-        .btn-outline {
-            background: transparent;
+            background: #E87A2A;
             color: #fff;
-            border: 2px solid #D4A02B;
-            box-shadow: none;
-            margin-left: 10px;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: 0.3s;
+            z-index: 2;
+            position: relative;
         }
-        .btn-outline:hover {
+        .btn-slide:hover {
             background: #D4A02B;
-            color: #3D2B1F;
+            transform: scale(1.05);
         }
+        @keyframes slide {
+            0%, 20% { transform: translateX(0); }
+            25%, 45% { transform: translateX(-25%); }
+            50%, 70% { transform: translateX(-50%); }
+            75%, 95% { transform: translateX(-75%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* ========== SECTION TITLES ========== */
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin: 50px 0 15px;
             color: #3D2B1F;
             font-weight: 700;
         }
         .section-title span {
-            color: #D4A02B;
+            color: #E87A2A;
         }
         .section-sub {
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            color: #6B5B4A;
-            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #888;
         }
-        #about {
-            padding: 80px 0;
+
+        /* ========== CATEGORY GRID ========== */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        .category-card {
             background: #fff;
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+            border: 1px solid #f0ebe0;
+            cursor: pointer;
         }
-        .about-grid {
-            display: flex;
-            gap: 60px;
-            align-items: center;
-            flex-wrap: wrap;
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+            border-color: #E87A2A;
         }
-        .about-grid .text {
-            flex: 1;
-            min-width: 280px;
+        .category-card i {
+            font-size: 2.8rem;
+            color: #E87A2A;
+            margin-bottom: 12px;
         }
-        .about-grid .text h3 {
-            font-size: 2.2rem;
+        .category-card h4 {
             color: #3D2B1F;
-            margin-bottom: 10px;
         }
-        .about-grid .text h3 span {
-            color: #D4A02B;
+        .category-card p {
+            font-size: 0.9rem;
+            color: #888;
         }
-        .about-grid .text .tagline {
-            font-size: 1.3rem;
-            color: #D4A02B;
-            font-weight: 600;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        .about-grid .text p {
-            margin-bottom: 15px;
-            color: #4A3F35;
-        }
-        .about-grid .text .customer-types {
-            background: #FFF8F0;
-            padding: 15px 20px;
-            border-radius: 12px;
-            border-left: 4px solid #D4A02B;
-            margin: 15px 0;
-        }
-        .about-grid .text .customer-types p {
-            margin-bottom: 5px;
-        }
-        .about-grid .image {
-            flex: 1;
-            min-width: 280px;
-            height: 350px;
-            border-radius: 20px;
-            background-image: url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format');
-            background-size: cover;
-            background-position: center;
-            border: 5px solid #D4A02B;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-        .features-grid {
+
+        /* ========== PRODUCTS ========== */
+        #products { padding: 20px 0 60px; background: #FFF8F0; }
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 25px;
-            margin-top: 30px;
-        }
-        .feature-item {
-            text-align: center;
-            background: #FFF8F0;
-            padding: 30px 20px;
-            border-radius: 16px;
-            border-bottom: 4px solid #D4A02B;
-            transition: 0.3s;
-        }
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-        .feature-item i {
-            font-size: 2.5rem;
-            color: #D4A02B;
-            margin-bottom: 12px;
-        }
-        .feature-item h4 {
-            color: #3D2B1F;
-            font-size: 1rem;
-        }
-        .feature-item p {
-            font-size: 0.9rem;
-            color: #6B5B4A;
-        }
-        .cert-banner {
-            background: linear-gradient(135deg, #3D2B1F 0%, #5A3D2B 100%);
-            padding: 25px 0;
-            text-align: center;
-            color: #fff;
-            border-top: 3px solid #D4A02B;
-            border-bottom: 3px solid #D4A02B;
-        }
-        .cert-banner .cert-item {
-            display: inline-block;
-            margin: 0 25px;
-            font-weight: 500;
-            font-size: 1rem;
-        }
-        .cert-banner .cert-item i {
-            color: #D4A02B;
-            margin-right: 8px;
-        }
-        @media (max-width: 600px) {
-            .cert-banner .cert-item {
-                display: block;
-                margin: 8px 0;
-            }
-        }
-        #products {
-            padding: 80px 0;
-            background: #FFF8F0;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
         }
         .product-card {
             background: #fff;
-            border-radius: 20px;
-            padding: 25px 15px;
+            border-radius: 16px;
+            padding: 20px 15px;
             text-align: center;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             transition: 0.3s;
-            border: 1px solid #F0E8DC;
+            border: 1px solid #f0ebe0;
             position: relative;
-            overflow: hidden;
         }
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 45px rgba(0,0,0,0.1);
-            border-color: #D4A02B;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.1);
         }
         .product-card .badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #C0392B;
+            top: 10px;
+            right: 10px;
+            background: #E87A2A;
             color: #fff;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
-            padding: 4px 14px;
+            padding: 3px 12px;
             border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
-        .product-card .badge.bestseller {
-            background: #D4A02B;
-        }
+        .product-card .badge.bestseller { background: #C0392B; }
         .product-card .icon {
-            font-size: 3rem;
-            color: #D4A02B;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            color: #E87A2A;
+            margin-bottom: 8px;
         }
         .product-card h4 {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #3D2B1F;
         }
         .product-card .price {
             font-weight: 700;
-            color: #D4A02B;
-            font-size: 1.2rem;
-            margin: 8px 0;
+            color: #E87A2A;
+            font-size: 1.1rem;
+            margin: 6px 0;
         }
         .product-card .tag {
             display: inline-block;
-            background: #F0E8DC;
-            padding: 4px 14px;
+            background: #f0ebe0;
+            padding: 2px 12px;
             border-radius: 50px;
-            font-size: 0.8rem;
-            color: #5A4A3A;
+            font-size: 0.7rem;
+            color: #888;
         }
         .whatsapp-order {
             display: inline-block;
-            margin-top: 12px;
+            margin-top: 10px;
             background: #25d366;
             color: #fff;
-            padding: 8px 20px;
+            padding: 6px 18px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             transition: 0.3s;
         }
-        .whatsapp-order:hover {
-            background: #1ebe5c;
-            transform: scale(1.05);
-        }
-        .whatsapp-order i {
-            margin-right: 6px;
-        }
-        #reviews {
-            padding: 80px 0;
+        .whatsapp-order:hover { background: #1ebe5c; transform: scale(1.05); }
+
+        /* ========== ABOUT ========== */
+        #about {
+            padding: 60px 0;
             background: #fff;
         }
-        .review-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        .review-card {
-            background: #FFF8F0;
-            padding: 25px;
-            border-radius: 20px;
-            border-left: 5px solid #D4A02B;
-        }
-        .review-card .stars {
-            color: #D4A02B;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-        .review-card p {
-            font-style: italic;
-            color: #4A3F35;
-            margin-bottom: 10px;
-        }
-        .review-card .author {
-            font-weight: 600;
-            color: #3D2B1F;
-        }
-        #process {
-            padding: 80px 0;
-            background: #FFF8F0;
-        }
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 30px;
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            margin-top: 20px;
         }
-        .step {
-            background: #fff;
-            padding: 30px 15px;
-            border-radius: 20px;
-            border-bottom: 4px solid #D4A02B;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
+        .about-content p {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
         }
-        .step:hover {
-            transform: translateY(-5px);
+        .about-content .tagline {
+            font-size: 1.3rem;
+            color: #E87A2A;
+            font-weight: 600;
+            font-style: italic;
         }
-        .step .num {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #D4A02B;
-        }
-        .step h4 {
-            color: #3D2B1F;
-            margin: 10px 0 5px;
-        }
+
+        /* ========== CONTACT ========== */
         #contact {
-            padding: 80px 0;
+            padding: 60px 0;
             background: linear-gradient(135deg, #3D2B1F 0%, #5A3D2B 100%);
             color: #fff;
         }
-        #contact .section-title {
-            color: #fff;
-        }
-        #contact .section-title span {
-            color: #D4A02B;
-        }
+        #contact .section-title { color: #fff; }
+        #contact .section-title span { color: #E87A2A; }
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
         }
         .contact-item {
             background: rgba(255,255,255,0.08);
-            padding: 25px;
-            border-radius: 16px;
-            border-left: 4px solid #D4A02B;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 3px solid #E87A2A;
         }
         .contact-item h4 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: #D4A02B;
+            color: #E87A2A;
+            font-size: 1rem;
+            margin-bottom: 5px;
         }
         .contact-item p {
             opacity: 0.9;
-            line-height: 1.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
-        .contact-item i {
-            margin-right: 10px;
-            color: #D4A02B;
-        }
-        .map-placeholder {
-            background: rgba(255,255,255,0.06);
-            padding: 20px;
-            border-radius: 16px;
-            text-align: center;
-            margin-top: 10px;
-            font-size: 0.95rem;
-            border: 1px dashed #D4A02B;
-        }
-        .map-placeholder a {
-            color: #D4A02B;
-            text-decoration: underline;
-        }
+        .contact-item i { margin-right: 8px; color: #E87A2A; }
+
         .social-bar {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin: 30px 0 10px;
+            margin-top: 30px;
         }
         .social-bar a {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: rgba(255,255,255,0.1);
-            padding: 10px 22px;
+            padding: 8px 18px;
             border-radius: 50px;
             color: #fff;
             font-weight: 500;
+            font-size: 0.85rem;
             transition: 0.3s;
             border: 1px solid rgba(255,255,255,0.1);
         }
         .social-bar a:hover {
-            background: #D4A02B;
-            color: #3D2B1F;
-            border-color: #D4A02B;
-            transform: translateY(-3px);
+            background: #E87A2A;
+            color: #fff;
+            border-color: #E87A2A;
         }
+
         .whatsapp-float {
             position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 100;
+            width: 55px;
+            height: 55px;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
             transition: 0.3s;
         }
         .whatsapp-float:hover {
             transform: scale(1.1);
-            background-color: #1ebe5c;
             box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
         }
+
         footer {
             background: #1A100A;
             color: #aaa;
             text-align: center;
-            padding: 25px 0;
-            font-size: 0.9rem;
-            border-top: 3px solid #D4A02B;
+            padding: 20px 0;
+            font-size: 0.85rem;
+            border-top: 3px solid #E87A2A;
         }
-        footer span {
-            color: #D4A02B;
-        }
+        footer span { color: #E87A2A; }
+
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            .hero-content p {
-                font-size: 1rem;
-            }
-            .hero {
-                height: 70vh;
-            }
-            nav a {
-                margin-left: 12px;
-                font-size: 13px;
-            }
-            .logo {
-                font-size: 22px;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .about-grid {
-                flex-direction: column;
-            }
-            .header-content {
-                flex-direction: column;
-                gap: 12px;
-            }
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 25px;
-                right: 25px;
-                font-size: 25px;
-            }
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            .cert-banner .cert-item {
-                display: block;
-                margin: 8px 0;
-            }
+            .header-content { flex-direction: column; gap: 10px; }
+            .search-box input { width: 80px; }
+            nav a { padding: 5px 10px; font-size: 12px; }
+            .slider-container { height: 280px; }
+            .slider-slide h2 { font-size: 1.8rem; }
+            .slider-slide p { font-size: 0.95rem; }
+            .section-title { font-size: 1.6rem; }
+            .whatsapp-float { width: 45px; height: 45px; font-size: 22px; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
 <body>
 
+<!-- ========== TOP OFFER BAR ========== -->
+<div class="top-bar">
+    🎉 Get <span>20% OFF</span> on your first order! Use code: <span>WELCOME20</span>
+</div>
+
+<!-- ========== HEADER ========== -->
 <header>
     <div class="container header-content">
         <div class="logo">
-            Kunika<span>Zest</span>
-            <small>"Freshness you can smell, Purity you can taste"</small>
+            Kunika <span>Zest</span>
+            <span class="tagline">"Freshness you can smell, Purity you can taste"</span>
         </div>
+
         <nav>
-            <a href="#about"><i class="fas fa-leaf"></i> About</a>
-            <a href="#products"><i class="fas fa-shopping-bag"></i> Products</a>
-            <a href="#process"><i class="fas fa-seedling"></i> Process</a>
-            <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
-            <a href="#contact"><i class="fas fa-phone"></i> Contact</a>
+            <a href="#about">About Us</a>
+            <div class="dropdown">
+                <a href="#products">Products <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#products">🌿 Whole Spices</a>
+                    <a href="#products">🧂 Blended Masalas</a>
+                    <a href="#products">⚡ Powder Spices</a>
+                    <a href="#products">🫒 Oils</a>
+                </div>
+            </div>
+            <a href="#contact">Contact</a>
         </nav>
+
+        <div class="header-icons">
+            <div class="search-box">
+                <input type="text" placeholder="Search..." />
+                <i class="fas fa-search"></i>
+            </div>
+            <a href="#"><i class="far fa-heart"></i></a>
+            <a href="#"><i class="far fa-user"></i></a>
+            <a href="#">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
     </div>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <div class="badge"><i class="fas fa-award"></i> India's Trusted Spice Brand</div>
-        <h1>Pure <span>Spices</span> &amp; <span>Oils</span></h1>
-        <p>From farm to your kitchen — experience the authentic taste of Kunika Zest. Handcrafted with tradition and love.</p>
-        <div>
-            <a href="#products" class="btn"><i class="fas fa-store"></i> Explore Our Range</a>
-            <a href="#about" class="btn btn-outline"><i class="fas fa-info-circle"></i> Learn More</a>
+<!-- ========== HERO SLIDER ========== -->
+<div class="slider-container">
+    <div class="slider-track">
+        <!-- Slide 1: Spices & Oils -->
+        <div class="slider-slide" style="background-image: url('https://i.ibb.co/XfdXVvzd/Gemini-Generated-Image-279he5279he5279h-1.png');">
+            <h2>Pure <span>Spices</span> &amp; <span>Oils</span></h2>
+            <p>From farm to your kitchen — authentic taste of Kunika Zest</p>
+            <a href="#products" class="btn-slide">Shop Now</a>
+        </div>
+
+        <!-- Slide 2: Cold-Pressed Oils -->
+        <div class="slider-slide" style="background-image: url('https://i.ibb.co/Pvxmjw5x/Gemini-Generated-Image-ru3qwpru3qwpru3q.png');">
+            <h2>Cold-Pressed <span>Oils</span></h2>
+            <p>Mustard &amp; Peanut Oil — pure, natural, and nutrient-rich</p>
+            <a href="#products" class="btn-slide">Explore Oils</a>
+        </div>
+
+        <!-- Slide 3: Quality Masalas -->
+        <div class="slider-slide" style="background-image: url('https://i.postimg.cc/1RWPgsrb/masala-quality.png');">
+            <h2>Quality <span>Masalas</span></h2>
+            <p>Blended with love — the perfect taste of Indian spices</p>
+            <a href="#products" class="btn-slide">View Blends</a>
+        </div>
+
+        <!-- Slide 4: Direct Customers, Retailers, Wholesalers & Distributors -->
+        <div class="slider-slide" style="background-image: url('https://i.ibb.co/yF3yKKkb/Gemini-Generated-Image-erdzz9erdzz9erdz-1.png');">
+            <h2>Direct Customers, Retailers, <span>Wholesalers &amp; Distributors</span></h2>
+            <p>Trusted Indian flavors delivered to your doorstep</p>
+            <a href="#contact" class="btn-slide">Contact Us</a>
         </div>
     </div>
-</section>
+</div>
 
-<section id="about">
-    <div class="container">
-        <div class="section-title">About <span>Kunika Zest</span></div>
-        <div class="section-sub">"Freshness you can smell, Purity you can taste."</div>
-        <div class="about-grid">
-            <div class="text">
-                <h3>From <span>Farm</span> to Your <span>Kitchen</span></h3>
-                <p class="tagline">"Freshness you can smell, Purity you can taste."</p>
-                <p>At <strong>Kunika Zest</strong>, we specialize in high-quality, hygienically processed spices and premium edible oils. Our product range includes <strong>ground spices</strong> like cumin (jeera), turmeric (haldi), red chilli (lal mirch), and coriander (dhaniya), along with <strong>whole spices</strong>, <strong>blended masalas</strong>, and <strong>cold-pressed oils</strong> like mustard and peanut oil.</p>
-                <p>Every product is crafted with care to deliver <strong>rich aroma, authentic taste, and uncompromised purity</strong> — from farm to your kitchen.</p>
-                <div class="customer-types">
-                    <p><strong>We proudly serve:</strong></p>
-                    <p>🏠 <strong>Direct Customers / Retail</strong> — Pure, everyday spices for your home kitchen</p>
-                    <p>📦 <strong>Wholesale Buyers</strong> — Consistent quality in bulk for shopkeepers and distributors</p>
-                    <p>🌍 <strong>International Clients</strong> — Trusted Indian flavors delivered worldwide</p>
-                </div>
-                <p style="color:#D4A02B; font-weight:600; font-size:1.1rem; margin-top:15px;">
-                    <i class="fas fa-check-circle"></i> With a strong focus on affordability, consistency, and quality, we aim to build long-term trust with households, दुकानदार, and distributors across India and beyond.
-                </p>
-            </div>
-            <div class="image"></div>
+<!-- ========== CATEGORY GRID ========== -->
+<div class="container">
+    <div class="section-title">Shop by <span>Category</span></div>
+    <div class="category-grid">
+        <div class="category-card">
+            <i class="fas fa-seedling"></i>
+            <h4>Whole Spices</h4>
+            <p>Jeera, Tej Patta, Laung &amp; more</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-mortar-pestle"></i>
+            <h4>Blended Masalas</h4>
+            <p>Garam, Chhole, Meat Masala &amp; more</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-bolt"></i>
+            <h4>Powder Spices</h4>
+            <p>Haldi, Dhaniya, Red Chilli &amp; more</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-flask"></i>
+            <h4>Oils</h4>
+            <p>Mustard Oil, Peanut Oil</p>
         </div>
     </div>
-</section>
+</div>
 
-<section style="padding: 40px 0; background: #FFF8F0;">
-    <div class="container">
-        <div class="section-title" style="font-size:2rem;">Why Choose <span>Kunika Zest</span></div>
-        <div class="features-grid">
-            <div class="feature-item">
-                <i class="fas fa-tractor"></i>
-                <h4>Farm to Table</h4>
-                <p>Sourced directly from trusted farms</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-microscope"></i>
-                <h4>Hygienic Processing</h4>
-                <p>Automated, minimal human contact</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-ban"></i>
-                <h4>No Adulteration</h4>
-                <p>Pure, authentic spices only</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-oil-can"></i>
-                <h4>Cold-Pressed Oils</h4>
-                <p>Retains natural nutrients &amp; flavor</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-certificate"></i>
-                <h4>Certified Quality</h4>
-                <p>FSSAI, Udyam, Trademark protected</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="cert-banner">
-    <div class="container">
-        <span class="cert-item"><i class="fas fa-certificate"></i> FSSAI Certified</span>
-        <span class="cert-item"><i class="fas fa-award"></i> Udyam Registered</span>
-        <span class="cert-item"><i class="fas fa-trademark"></i> Trademark Protected</span>
-        <span class="cert-item"><i class="fas fa-shield-alt"></i> Pure &amp; Authentic</span>
-    </div>
-</section>
-
+<!-- ========== PRODUCTS ========== -->
 <section id="products">
     <div class="container">
         <div class="section-title">Our <span>Products</span></div>
         <div class="section-sub">Click <i class="fab fa-whatsapp" style="color:#25d366;"></i> to order directly on WhatsApp</div>
+
         <div class="product-grid">
             <div class="product-card">
                 <span class="badge bestseller">⭐ Bestseller</span>
@@ -689,9 +599,10 @@
                 <span class="tag">Pure Turmeric</span>
                 <br>
                 <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Haldi%20Powder%20(₹180/kg)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    <i class="fab fa-whatsapp"></i> Order
                 </a>
             </div>
+
             <div class="product-card">
                 <div class="icon"><i class="fas fa-seedling"></i></div>
                 <h4>Dhaniya Powder</h4>
@@ -699,9 +610,10 @@
                 <span class="tag">Premium Coriander</span>
                 <br>
                 <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Dhaniya%20Powder%20(₹160/kg)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    <i class="fab fa-whatsapp"></i> Order
                 </a>
             </div>
+
             <div class="product-card">
                 <span class="badge">🔥 Spicy</span>
                 <div class="icon"><i class="fas fa-fire"></i></div>
@@ -710,9 +622,10 @@
                 <span class="tag">Kashmiri / Guntur</span>
                 <br>
                 <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Red%20Chilli%20Powder%20(₹220/kg)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    <i class="fab fa-whatsapp"></i> Order
                 </a>
             </div>
+
             <div class="product-card">
                 <div class="icon"><i class="fas fa-leaf"></i></div>
                 <h4>Cumin / Jeera</h4>
@@ -720,9 +633,10 @@
                 <span class="tag">Premium Cumin</span>
                 <br>
                 <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Cumin%20(₹200/kg)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    <i class="fab fa-whatsapp"></i> Order
                 </a>
             </div>
+
             <div class="product-card">
                 <span class="badge bestseller">⭐ Bestseller</span>
                 <div class="icon"><i class="fas fa-flask"></i></div>
@@ -731,9 +645,10 @@
                 <span class="tag">Cold-Pressed</span>
                 <br>
                 <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Mustard%20Oil%20(₹280/L)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    <i class="fab fa-whatsapp"></i> Order
                 </a>
             </div>
+
             <div class="product-card">
                 <div class="icon"><i class="fas fa-bottle-droplet"></i></div>
                 <h4>Peanut Oil</h4>
@@ -741,74 +656,54 @@
                 <span class="tag">Cold-Pressed</span>
                 <br>
                 <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Peanut%20Oil%20(₹320/L)" target="_blank" class="whatsapp-order">
-                    <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    <i class="fab fa-whatsapp"></i> Order
+                </a>
+            </div>
+
+            <div class="product-card">
+                <div class="icon"><i class="fas fa-mix"></i></div>
+                <h4>Garam Masala</h4>
+                <div class="price">₹120 / 100g</div>
+                <span class="tag">Signature Blend</span>
+                <br>
+                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Garam%20Masala%20(₹120/100g)" target="_blank" class="whatsapp-order">
+                    <i class="fab fa-whatsapp"></i> Order
+                </a>
+            </div>
+
+            <div class="product-card">
+                <div class="icon"><i class="fas fa-mix"></i></div>
+                <h4>Chhole Masala</h4>
+                <div class="price">₹100 / 100g</div>
+                <span class="tag">Signature Blend</span>
+                <br>
+                <a href="https://wa.me/919818345629?text=Hi%20Kunika!%20I%20want%20to%20order%20Chhole%20Masala%20(₹100/100g)" target="_blank" class="whatsapp-order">
+                    <i class="fab fa-whatsapp"></i> Order
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<section id="reviews">
+<!-- ========== ABOUT ========== -->
+<section id="about">
     <div class="container">
-        <div class="section-title">What Our <span>Customers Say</span></div>
-        <div class="section-sub">Real words from real people who love Kunika Zest</div>
-        <div class="review-grid">
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"The haldi has such a vibrant color! I can really taste the freshness. It's become a staple in my kitchen."</p>
-                <div class="author">— Anjali Sharma, Delhi</div>
-            </div>
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Best mustard oil I've bought in years. Reminds me of my grandmother's kitchen. Absolutely authentic!"</p>
-                <div class="author">— Rajesh Kumar, Noida</div>
-            </div>
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                <p>"The red chilli powder has the perfect kick. I love that it's pure with no added colors. Highly recommend!"</p>
-                <div class="author">— Priya Mehta, Mumbai</div>
-            </div>
+        <div class="section-title">About <span>Kunika Zest</span></div>
+        <div class="about-content">
+            <p class="tagline">"Freshness you can smell, Purity you can taste."</p>
+            <p>At <strong>Kunika Zest</strong>, we specialize in high-quality, hygienically processed spices and premium edible oils. Our range includes ground spices, whole spices, blended masalas, and cold-pressed oils like mustard and peanut oil.</p>
+            <p>We proudly serve <strong>retail customers</strong>, <strong>wholesale buyers</strong>, and <strong>international clients</strong> — bringing trusted Indian flavors to kitchens locally and globally.</p>
         </div>
     </div>
 </section>
 
-<section id="process">
-    <div class="container">
-        <div class="section-title">Our <span>Journey</span></div>
-        <div class="section-sub">From seed to your spice rack — every step is crafted with care.</div>
-        <div class="process-steps">
-            <div class="step">
-                <div class="num">01</div>
-                <h4>🌱 Farm Sourcing</h4>
-                <p>We handpick the finest seeds and mustard from trusted local farms.</p>
-            </div>
-            <div class="step">
-                <div class="num">02</div>
-                <h4>☀️ Sun-Drying</h4>
-                <p>Natural sun-drying preserves the authentic flavor and colour.</p>
-            </div>
-            <div class="step">
-                <div class="num">03</div>
-                <h4>⚙️ Grinding &amp; Pressing</h4>
-                <p>Traditional grinding for spices and cold-pressing for pure oils.</p>
-            </div>
-            <div class="step">
-                <div class="num">04</div>
-                <h4>🏷️ Packaging</h4>
-                <p>Hygienically packed to retain freshness and aroma.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============ CONTACT SECTION (COMPLETE) ============ -->
+<!-- ========== CONTACT ========== -->
 <section id="contact">
     <div class="container">
         <div class="section-title">Get in <span>Touch</span></div>
         <div class="section-sub" style="color:#ddd;">We'd love to hear from you. Reach out to us anytime.</div>
 
         <div class="contact-grid">
-            <!-- Contact Item 1: Head Office -->
             <div class="contact-item">
                 <h4><i class="fas fa-building"></i> Head Office</h4>
                 <p>Raj Nagar-II, Palam Colony,<br>New Delhi - 110075</p>
@@ -816,35 +711,22 @@
                 <p><i class="fas fa-envelope"></i> info@kunikazest.com</p>
             </div>
 
-            <!-- Contact Item 2: Manufacturing -->
             <div class="contact-item">
-                <h4><i class="fas fa-industry"></i> Manufacturing Operations</h4>
+                <h4><i class="fas fa-industry"></i> Manufacturing</h4>
                 <p>B-8, Mayapuri Industrial Area,<br>Phase 1, New Delhi</p>
-                <p><i class="fas fa-clock"></i> Mon–Sat: 9:00 AM – 6:00 PM</p>
+                <p><i class="fas fa-clock"></i> Mon–Sat: 9 AM – 6 PM</p>
             </div>
 
-            <!-- Contact Item 3: Google Maps -->
             <div class="contact-item">
                 <h4><i class="fas fa-map-pin"></i> Find Us</h4>
-                <div class="map-placeholder">
-                    <i class="fas fa-map-marker-alt" style="font-size:1.8rem; color:#D4A02B;"></i>
-                    <p style="margin-top:10px;">
-                        📍 Head Office:<br>
-                        <a href="https://www.google.com/maps?q=Raj+Nagar+II+Palam+Colony+New+Delhi" target="_blank" style="color:#D4A02B; text-decoration:underline;">
-                            View on Google Maps
-                        </a>
-                    </p>
-                    <p style="margin-top:10px;">
-                        📍 Manufacturing Unit:<br>
-                        <a href="https://www.google.com/maps?q=Mayapuri+Industrial+Area+Phase+1+New+Delhi" target="_blank" style="color:#D4A02B; text-decoration:underline;">
-                            View on Google Maps
-                        </a>
-                    </p>
-                </div>
+                <p>
+                    📍 <a href="https://www.google.com/maps?q=Raj+Nagar+II+Palam+Colony+New+Delhi" target="_blank" style="color:#E87A2A;">Head Office</a>
+                    <br>
+                    📍 <a href="https://www.google.com/maps?q=Mayapuri+Industrial+Area+Phase+1+New+Delhi" target="_blank" style="color:#E87A2A;">Manufacturing</a>
+                </p>
             </div>
         </div>
 
-        <!-- Social Media Links -->
         <div class="social-bar">
             <a href="https://www.instagram.com/kunikazest" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
             <a href="https://www.facebook.com/kunikaharminderkaur/" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
@@ -855,15 +737,15 @@
     </div>
 </section>
 
-<!-- ============ FLOATING WHATSAPP BUTTON ============ -->
+<!-- ========== WHATSAPP FLOATING ========== -->
 <a href="https://wa.me/919818345629" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- ============ FOOTER ============ -->
+<!-- ========== FOOTER ========== -->
 <footer>
     <div class="container">
-        &copy; 2026 <span>Kunika Zest</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color:#D4A02B;"></i> from India
+        &copy; 2026 <span>Kunika Zest</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color:#E87A2A;"></i> from India
     </div>
 </footer>
 
