@@ -331,7 +331,7 @@
             .cert-bar .cert-item { display: block; margin: 10px 0; }
         }
 
-        /* ========== PRODUCTS BY CATEGORY ========== */
+        /* ========== PRODUCTS ========== */
         #products {
             padding: 20px 0 60px;
             background: #FFF8F0;
@@ -446,6 +446,58 @@
         }
         .whatsapp-order i {
             margin-right: 6px;
+        }
+
+        /* ========== PROCESS SECTION ========== */
+        #process {
+            padding: 60px 0;
+            background: #fff;
+        }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .process-step {
+            text-align: center;
+            background: #FFF8F0;
+            padding: 30px 20px;
+            border-radius: 16px;
+            border-bottom: 4px solid #E87A2A;
+            transition: 0.3s;
+        }
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .process-step .step-number {
+            display: inline-block;
+            background: #E87A2A;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .process-step .step-icon {
+            font-size: 2.5rem;
+            color: #E87A2A;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .process-step h4 {
+            color: #2E7D32;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .process-step p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* ========== CUSTOMER REVIEWS SECTION ========== */
@@ -612,6 +664,10 @@
             .logo .tagline { font-size: 9px; }
             .review-grid { grid-template-columns: 1fr; }
             .product-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+            .process-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .process-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -644,7 +700,7 @@
                     <a href="#oils">🫒 Oils</a>
                 </div>
             </div>
-            <a href="#reviews">Reviews</a>
+            <a href="#process">Process</a>
             <a href="#contact">Contact</a>
         </nav>
 
@@ -828,7 +884,6 @@
                         <i class="fab fa-whatsapp"></i> Order on WhatsApp
                     </a>
                 </div>
-                <!-- Kasturi Methi - MOVED TO WHOLE SPICES (Out of Stock) -->
                 <div class="product-card" style="opacity:0.7;">
                     <div class="icon"><i class="fas fa-leaf"></i></div>
                     <h4>Kasturi Methi</h4>
@@ -876,7 +931,6 @@
                         <i class="fab fa-whatsapp"></i> Order on WhatsApp
                     </a>
                 </div>
-                <!-- Saunth - MOVED TO POWDER SPICES (In Stock) -->
                 <div class="product-card">
                     <div class="icon"><i class="fas fa-seedling"></i></div>
                     <h4>Saunth (Dry Ginger)</h4>
@@ -907,7 +961,6 @@
                         <i class="fab fa-whatsapp"></i> Order on WhatsApp
                     </a>
                 </div>
-                <!-- Sambhar Masala - Coming Soon -->
                 <div class="product-card" style="opacity:0.7;">
                     <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
                     <h4>Sambhar Masala</h4>
@@ -915,7 +968,6 @@
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-coming">Coming Soon</span>
                 </div>
-                <!-- Pav Bhaji Masala - Coming Soon -->
                 <div class="product-card" style="opacity:0.7;">
                     <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
                     <h4>Pav Bhaji Masala</h4>
@@ -923,7 +975,6 @@
                     <span class="tag">100g Pack</span><br>
                     <span class="tag-coming">Coming Soon</span>
                 </div>
-                <!-- Biryani Masala - Out of Stock -->
                 <div class="product-card" style="opacity:0.7;">
                     <div class="icon"><i class="fas fa-mortar-pestle"></i></div>
                     <h4>Biryani Masala</h4>
@@ -995,6 +1046,58 @@
                     <span class="tag">500ml Bottle</span><br>
                     <span class="tag-out">Currently Unavailable</span>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PROCESS SECTION (LINKED TO QUALITY SLIDE) ========== -->
+<section id="process">
+    <div class="container">
+        <div class="section-title">Our <span>Manufacturing Process</span></div>
+        <div class="section-sub">From farm to your kitchen — quality at every step</div>
+
+        <div class="process-grid">
+            <div class="process-step">
+                <span class="step-number">01</span>
+                <span class="step-icon">🌱</span>
+                <h4>Farm Sourcing</h4>
+                <p>We handpick the finest seeds, spices, and mustard from trusted local farms to ensure premium quality from the very beginning.</p>
+            </div>
+
+            <div class="process-step">
+                <span class="step-number">02</span>
+                <span class="step-icon">☀️</span>
+                <h4>Sun-Drying</h4>
+                <p>Natural sun-drying preserves the authentic flavor, color, and essential oils of our spices, keeping them fresh and aromatic.</p>
+            </div>
+
+            <div class="process-step">
+                <span class="step-number">03</span>
+                <span class="step-icon">⚙️</span>
+                <h4>Grinding &amp; Pressing</h4>
+                <p>Traditional grinding methods for spices and cold-pressing techniques for oils retain maximum nutrients and natural goodness.</p>
+            </div>
+
+            <div class="process-step">
+                <span class="step-number">04</span>
+                <span class="step-icon">🔬</span>
+                <h4>Quality Testing</h4>
+                <p>Every batch undergoes rigorous quality checks for purity, aroma, and taste to ensure you receive only the finest products.</p>
+            </div>
+
+            <div class="process-step">
+                <span class="step-number">05</span>
+                <span class="step-icon">🏷️</span>
+                <h4>Hygienic Packaging</h4>
+                <p>Our spices and oils are packed in state-of-the-art facilities to retain freshness, aroma, and nutritional value.</p>
+            </div>
+
+            <div class="process-step">
+                <span class="step-number">06</span>
+                <span class="step-icon">🚚</span>
+                <h4>Delivered to Your Door</h4>
+                <p>From our manufacturing unit to your kitchen — we ensure timely delivery of fresh, authentic products every time.</p>
             </div>
         </div>
     </div>
