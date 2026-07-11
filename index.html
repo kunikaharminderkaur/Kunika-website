@@ -528,6 +528,8 @@
             font-size: 1.6rem;
             margin-bottom: 15px;
         }
+
+        /* Cart Items List */
         .cart-item {
             display: flex;
             justify-content: space-between;
@@ -554,8 +556,10 @@
             transition: 0.3s;
         }
         .cart-item .item-qty button:hover { background: #E87A2A; color: #fff; }
+
+        /* Cart Total */
         .cart-total {
-            margin-top: 20px;
+            margin-top: 15px;
             padding-top: 15px;
             border-top: 2px solid #E87A2A;
             text-align: right;
@@ -565,8 +569,42 @@
         .cart-total span { color: #E87A2A; }
         .empty-cart { color: #888; text-align: center; padding: 20px 0; }
 
-        .cart-actions {
+        /* Customer Details Form */
+        .customer-details {
             margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #E87A2A;
+        }
+        .customer-details h4 {
+            color: #2E7D32;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+        .customer-details input,
+        .customer-details textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+        .customer-details input:focus,
+        .customer-details textarea:focus {
+            border-color: #E87A2A;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(232, 122, 42, 0.2);
+        }
+        .customer-details textarea {
+            height: 60px;
+            resize: vertical;
+        }
+
+        /* Order Button */
+        .cart-actions {
+            margin-top: 15px;
             display: flex;
             gap: 10px;
             justify-content: center;
@@ -584,13 +622,19 @@
             cursor: pointer;
             transition: 0.3s;
             text-align: center;
+            width: 100%;
         }
         .btn-whatsapp-order:hover {
             background: #1ebe5c;
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
         .btn-whatsapp-order i {
             margin-right: 8px;
+        }
+        .btn-whatsapp-order:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* ========== PROCESS SECTION ========== */
@@ -1267,10 +1311,21 @@
         <div class="cart-total" id="cartTotal" style="display:none;">
             Total: ₹<span id="totalAmount">0</span>
         </div>
+
+        <!-- Customer Details Form -->
+        <div class="customer-details" id="customerDetails" style="display:none;">
+            <h4>📋 Enter Your Details</h4>
+            <input type="text" id="customerName" placeholder="Full Name *" />
+            <input type="tel" id="customerPhone" placeholder="Phone Number *" />
+            <textarea id="customerAddress" placeholder="Delivery Address *"></textarea>
+            <input type="text" id="customerDeliveryTime" placeholder="Preferred Delivery Time (e.g., 6:00 PM)" />
+        </div>
+
+        <!-- Order Button -->
         <div class="cart-actions">
-            <a id="whatsappOrderBtn" class="btn-whatsapp-order" target="_blank">
-                <i class="fab fa-whatsapp"></i> Order on WhatsApp
-            </a>
+            <button id="placeOrderBtn" class="btn-whatsapp-order" style="display:none;">
+                <i class="fab fa-whatsapp"></i> Order Now on WhatsApp
+            </button>
         </div>
     </div>
 </div>
@@ -1428,12 +1483,14 @@
         const cartItemsDiv = document.getElementById('cartItems');
         const cartTotalDiv = document.getElementById('cartTotal');
         const totalAmountSpan = document.getElementById('totalAmount');
-        const whatsappBtn = document.getElementById('whatsappOrderBtn');
+        const customerDetails = document.getElementById('customerDetails');
+        const placeOrderBtn = document.getElementById('placeOrderBtn');
 
         if (cart.length === 0) {
             cartItemsDiv.innerHTML = '<div class="empty-cart">Your cart is empty. Start shopping!</div>';
             cartTotalDiv.style.display = 'none';
-            whatsappBtn.style.display = 'none';
+            customerDetails.style.display = 'none';
+            placeOrderBtn.style.display = 'none';
             return;
         }
 
@@ -1458,25 +1515,8 @@
         cartItemsDiv.innerHTML = html;
         cartTotalDiv.style.display = 'block';
         totalAmountSpan.textContent = total;
-        whatsappBtn.style.display = 'inline-block';
-
-        // Update WhatsApp order link
-        let message = 'Hi Kunika Zest! 👋\n\n';
-        message += 'I\'d like to place an order from your website.\n\n';
-        message += '🛒 My Cart:\n';
-        cart.forEach(item => {
-            message += `${item.qty} x ${item.name} - ₹${item.price * item.qty}\n`;
-        });
-        message += `\n💰 Total: ₹${total}\n\n`;
-        message += '📋 My Details:\n';
-        message += 'Name: \n';
-        message += 'Phone: \n';
-        message += 'Delivery Address: \n';
-        message += 'Preferred Delivery Time: \n\n';
-        message += 'Please confirm my order. 🙏';
-
-        const encodedMessage = encodeURIComponent(message);
-        whatsappBtn.href = `https://wa.me/919818345629?text=${encodedMessage}`;
+        customerDetails.style.display = 'block';
+        placeOrderBtn.style.display = 'block';
     }
 
     function updateQty(index, change) {
@@ -1488,6 +1528,47 @@
         }
         updateCartUI();
     }
+
+    // ===== PLACE ORDER ON WHATSAPP =====
+    document.getElementById('placeOrderBtn').addEventListener('click', function() {
+        const name = document.getElementById('customerName').value.trim();
+        const phone = document.getElementById('customerPhone').value.trim();
+        const address = document.getElementById('customerAddress').value.trim();
+        const deliveryTime = document.getElementById('customerDeliveryTime').value.trim();
+
+        // Validate required fields
+        if (!name || !phone || !address) {
+            alert('Please fill in your Name, Phone, and Delivery Address.');
+            return;
+        }
+
+        // Build order message
+        let message = 'Hi Kunika Zest! 👋\n\n';
+        message += '🛒 New Order from Website:\n\n';
+        message += '📋 Customer Details:\n';
+        message += `Name: ${name}\n`;
+        message += `Phone: ${phone}\n`;
+        message += `Delivery Address: ${address}\n`;
+        if (deliveryTime) {
+            message += `Preferred Delivery Time: ${deliveryTime}\n`;
+        }
+        message += '\n🛍️ Order Items:\n';
+
+        let total = 0;
+        cart.forEach(item => {
+            const itemTotal = item.price * item.qty;
+            total += itemTotal;
+            message += `${item.qty} x ${item.name} - ₹${itemTotal}\n`;
+        });
+
+        message += `\n💰 Total: ₹${total}\n\n`;
+        message += 'Please confirm my order. 🙏';
+
+        // Encode and send to WhatsApp
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/919818345629?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
+    });
 
     // ===== CART MODAL =====
     const cartModal = document.getElementById('cartModal');
